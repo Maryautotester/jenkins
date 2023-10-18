@@ -1,0 +1,28 @@
+---
+- scm:
+    name: git-ui-autotest
+    scm:
+      - git:
+          url: git@github.com:Maryautotester/otus_ui_1.git
+          credentials-id: jenkins
+          branches:
+            - FETCH_HEAD
+          refspec: ${BRANCH}
+- scm:
+    name: git-api-autotest
+    scm:
+      - git:
+          url: git@github.com:Maryautotester/OTUS_RestAssured.git
+          credentials-id: jenkins
+          branches:
+            - FETCH_HEAD
+          refspec: ${BRANCH}
+- scm:
+    name: git-appium-autotest
+    scm:
+      - git:
+          url: git@github.com:Maryautotester/Appium_tests.git
+          credentials-id: jenkins
+          branches:
+            - FETCH_HEAD
+          refspec: ${BRANCH}

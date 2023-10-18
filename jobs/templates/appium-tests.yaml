@@ -1,0 +1,34 @@
+- job-template:
+    name: 'appium-tests'
+    description: 'Running Appium tests'
+    project-type: pipeline
+    concurrent: false
+    properties:
+      - build-discarder:
+          days-to-keep: 30
+          num-to-keep: 10
+    parameters:
+      - string:
+          name: BRANCH
+          default: master
+          description: 'Branch to tests repo'
+      - string:
+          name: PLATFORM_NAME
+          default: Android
+          description: 'Platform Name'
+      - string:
+          name: DEVICE_NAME
+          default: otus
+          description: 'Device name'
+      - string:
+          name: PLATFORM_VERSION
+          default: 5.1
+          description: 'Platform version'
+      - string:
+          name: APPIUM_URL
+          default: http://127.0.0.1:4723/wd/hub
+          description: Appium URL
+    pipeline-scm:
+      scm:
+        - git-appium-autotest
+      script-path: jenkins/appium-tests.groovy

@@ -1,0 +1,9 @@
+---
+
+- project:
+    name: 'Autotests'
+    job-description: '<h4 style="color:#999696;">Autotests</h4>'
+    jobs:
+      - 'ui-tests'
+      - 'api-tests'
+      - 'appium-tests'
