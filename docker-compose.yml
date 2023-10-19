@@ -11,6 +11,8 @@ services:
       - jenkins
     volume:
       - ./nginx/confs:/etc/nginx/conf.d/
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - 80:80
 
@@ -32,7 +34,7 @@ services:
     hostname: jenkins
     user: root
     ports:
-      - "127.0.0.1:8090:8080"
+      - "8090:8080"
     environment:
       - JAVA_OPTS="-Dhudson.model.DownloadService.noSignatureCheck=true"
       - DOCKER_HOST=unix:///var/run/docker.sock
