@@ -36,7 +36,7 @@ services:
     ports:
       - "8090:8080"
     environment:
-      - JAVA_OPTS="-Dhudson.model.DownloadService.noSignatureCheck=true"
+      - JAVA_OPTS="-Dhudson.model.DownloadService.noSignatureCheck=true -Dorg.apache.commons.jelly.tags.fmt.timeZone=Europe/Moscow"
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:
       - /var/jenkins_home:/var/jenkins_home
