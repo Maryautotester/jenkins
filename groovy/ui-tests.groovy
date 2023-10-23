@@ -1,4 +1,4 @@
-timeout(180) {
+timeout(30) {
     node('maven') {
         timestamps {
             stage('Checkout') {
@@ -6,10 +6,13 @@ timeout(180) {
             }
             stage('Run tests') {
                 tests_exit_code = sh(
-                        script: "mvn test -DbaseUrl=$BASE_URL",
+                script: """"
+                mvn test -Dbrowser=$BROWSER -Dbrowserversion=$BROWSER_VERSION -Dwebdriver.base.url=$BASE_URL -Dwebdriver.remote.url=$SELENOID_URL
+                """,
+                        returnStatus: true
                 )
                 if (tests_exit_code != 0) {
-                    currentBuild.result = 'SUCCESS'
+                    currentBuild.result = 'UNSTABLE'
                 }
             }
             stage('Publish artifacts') {
@@ -18,7 +21,7 @@ timeout(180) {
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'allure-results']]
+                        results: [[path: './allure-results']]
                 ])
             }
         }
