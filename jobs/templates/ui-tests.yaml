@@ -5,8 +5,8 @@
     concurrent: false
     properties:
       - build-discarder:
-          days-to-keep: 30
-          num-to-keep: 10
+          days-to-keep: 10
+          num-to-keep: 7
     parameters:
       - string:
           name: BRANCH
@@ -26,7 +26,7 @@
           description: 'Browser version'
       - string:
           name: SELENOID_URL
-          default: http://127.0.0.1:4444/wd/hub
+          default: http://127.0.0.1/wd/hub
     pipeline-scm:
       scm:
         - git-ui-autotest
