@@ -5,8 +5,8 @@
     concurrent: true
     properties:
       - build-discarder:
-          days-to-keep: 30
-          num-to-keep: 10
+          days-to-keep: 10
+          num-to-keep: 7
     parameters:
       - string:
           name: BRANCH
